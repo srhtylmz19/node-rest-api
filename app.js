@@ -1,13 +1,16 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 
 
 const productRoutes = require('./routes/products');
 const orderRoutes = require('./routes/orders');
 
 // LOG MIDDLEWARES FOR REQUESTS
-app.use(morgan('dev'))
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 
 // API ROUTES to HANDLE REQUESTS !
